@@ -1,0 +1,14 @@
+{
+  "words": ["RFID", "libUHFR"],
+  "ignorePaths": [
+    "pnpm-lock.yaml",
+    "node_modules",
+    "vscode-extension",
+    ".git/objects",
+    ".vscode",
+    ".vscode-insiders",
+    "coverage",
+    "build",
+    "dist"
+  ]
+}

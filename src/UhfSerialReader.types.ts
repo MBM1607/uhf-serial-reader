@@ -1,7 +1,3 @@
 export type ChangeEventPayload = {
-  value: string;
-};
-
-export type UhfSerialReaderViewProps = {
-  name: string;
+	value: string;
 };

@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "uhf-serial-reader": ["../src/index"],
+      "uhf-serial-reader/*": ["../src/*"]
+    }
+  }
+}

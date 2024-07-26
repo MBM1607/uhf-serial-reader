@@ -1,33 +1,33 @@
-import {
-  EventEmitter,
-  NativeModulesProxy,
-  Subscription,
-} from 'expo-modules-core';
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-// Import the native module. On web, it will be resolved to UhfSerialReader.web.ts
-// and on native platforms to UhfSerialReader.ts
-import { ChangeEventPayload } from './UhfSerialReader.types';
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+
+import type { Subscription } from 'expo-modules-core';
+import { EventEmitter, NativeModulesProxy } from 'expo-modules-core';
+
 import UhfSerialReaderModule from './UhfSerialReaderModule';
 
-// Get the native constant value.
-export const PI = UhfSerialReaderModule.PI;
-
-export function hello(): string {
-  return UhfSerialReaderModule.hello();
+export function connectUhfReader(): boolean {
+  return UhfSerialReaderModule.connect();
 }
 
-export async function setValueAsync(value: string) {
-  return await UhfSerialReaderModule.setValueAsync(value);
+export function disconnectUhfReader(): void {
+  return UhfSerialReaderModule.disconnect();
 }
 
 const emitter = new EventEmitter(
-  UhfSerialReaderModule ?? NativeModulesProxy.UhfSerialReader
+  UhfSerialReaderModule ?? NativeModulesProxy.UhfReader,
 );
 
-export function addChangeListener(
-  listener: (event: ChangeEventPayload) => void
-): Subscription {
-  return emitter.addListener<ChangeEventPayload>('onChange', listener);
-}
+export type UhfEventPayload = {
+  epc: string;
+  rssi: string;
+};
 
-export { ChangeEventPayload };
+export function addUhfListener(
+  listener: (event: UhfEventPayload) => void,
+): Subscription {
+  return emitter.addListener<UhfEventPayload>('onRead', listener);
+}

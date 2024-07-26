@@ -1,9 +1,9 @@
 {
-	"platforms": ["android"],
-	"ios": {
-		"modules": ["UhfSerialReaderModule"]
-	},
-	"android": {
-		"modules": ["expo.modules.uhfserialreader.UhfSerialReaderModule"]
-	}
+  "platforms": ["android"],
+  "ios": {
+    "modules": ["UhfSerialReaderModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.uhfserialreader.UhfSerialReaderModule"]
+  }
 }
